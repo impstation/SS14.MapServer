@@ -1,24 +1,65 @@
 Serilog:
-  Using: [ "Serilog.Sinks.Console", "Sentry.Serilog" ]
-  MinimumLevel:
-    Default: "Information"
-    Override:
-      SS14: "Information"
-      Microsoft: "Warning"
-      Microsoft.Hosting.Lifetime: "Information"
-      Microsoft.AspNetCore: "Warning"
-      Microsoft.AspNetCore.DataProtection: "Error" #This service doesn't use data protection
-      SS14.MapServer.Security.ApiKeyHandler: "Warning" #Ignore "... was not authenticated." spam
+    Using: [ "Serilog.Sinks.Console" ]
+    MinimumLevel:
+        Default: Verbose
+        Override:
+            SS14: "Verbose"
+            Microsoft: "Warning"
+            Microsoft.Hosting.Lifetime: "Information"
+            Microsoft.AspNetCore: "Warning"
+            #This service doesn't use data protection
+            Microsoft.AspNetCore.DataProtection: "Error"
+            #Ignore api key spam
+            SS14.MapServer.Security.ApiKeyHandler: "Error"
 
-  WriteTo:
-    - Name: Sentry
-    - Name: Console
-      Args:
-        OutputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3} {SourceContext}] {Message:lj}{NewLine}{Exception}"
+    WriteTo:
+        - Name: Console
+          Args:
+              OutputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3} {SourceContext}] {Message:lj}{NewLine}{Exception}"
 
-  Enrich: [ "FromLogContext" ]
+    Enrich: [ "FromLogContext" ]
+
+DetailedErrors: true
+
+ConnectionStrings:
+    default: "Server=map_database;Port=5432;Database=maps;User Id=postgres;Password=postgres;"
 
 AllowedHosts: "*"
 
+Auth:
+    ApiKey: "debug" # You can set this to whatever
+
+Server:
+    CorsOrigins:
+        - "*"
+    Host: "https://localhost:7154"
+    EnableSentry: false
+    Language: "en-us"
+#    UseHttps: false
+    UseForwardedHeaders: true
+    RateLimitCount: 1000
+    RateLimitWindowMinutes: 1
+
+Processing:
+    TargetDirectory: "/app/build"
+    DirectoryPoolMaxSize: 3
+    ProcessMaxQueueSize: 6
+
+Git:
+    RepositoryUrl: "https://github.com/impstation/imp-station-14"
+    Branch: "master"
+# Exclude maps that generally break the map renderer,
+# like planet maps or you just don't want rendered
+#    mapFileExcludePatterns:
+#        - "europa.yml"
+
+# AppWebhookSecret is stored via dotnet secrets
 Github:
-  AppName: "SS14.MapServer"
+    AppName: "impstation-map-server"
+    AppPrivateKeyLocation: "./app/private-key.pem"
+    AppId: 2178044
+    TemplateLocation: "Resources/Templates"
+
+Build:
+    MapRendererCommand: "Content.MapRenderer"
+    CleanMapFolderAfterImport: true
