@@ -32,7 +32,7 @@ Auth:
 Server:
     CorsOrigins:
         - "*"
-    Host: "https://localhost:7154"
+    Host: "https://maps.impstation.gay"
     EnableSentry: false
     Language: "en-us"
 #    UseHttps: false
