@@ -15,7 +15,9 @@ services:
       start_period: 15s
 
   ss14mapserver:
-    image: ghcr.io/space-wizards/ss14.mapserver:latest
+    build:
+      context: .
+      dockerfile: ./Dockerfile
     container_name: ss14mapserver
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
