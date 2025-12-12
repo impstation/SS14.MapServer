@@ -50,8 +50,8 @@ Git:
     Branch: "master"
 # Exclude maps that generally break the map renderer,
 # like planet maps or you just don't want rendered
-#    mapFileExcludePatterns:
-#        - "europa.yml"
+    mapFileExcludePatterns:
+        - "plasma.yml"
 
 # AppWebhookSecret is stored via dotnet secrets
 Github:
