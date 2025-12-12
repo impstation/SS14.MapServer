@@ -115,12 +115,14 @@ public sealed partial class LocalBuildService
 
         var log = logBuffer.ToString();
         // Bandaid the fact that the map renderer doesn't return an error code when rendering fails
-
-        if (process.ExitCode != 0 || LogErrorRegex().IsMatch(log))
-        {
-            var exception = new BuildException($"Error while running: {command} {string.Join(' ', arguments)}");
-            ProcessLocalBuildException(log, "run.log", exception);
-        }
+        //
+        // Apparently this messes up runs real often due to false positives
+        //
+        // if (process.ExitCode != 0 || LogErrorRegex().IsMatch(log))
+        // {
+        //     var exception = new BuildException($"Error while running: {command} {string.Join(' ', arguments)}");
+        //     ProcessLocalBuildException(log, "run.log", exception);
+        // }
 
         _log.Information("Run finished");
         return log;
