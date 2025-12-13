@@ -51,7 +51,7 @@ Git:
     Branch: "master"
     RetrieveMapFilesFromDiff: "false" #TODO: Set to true once GitHub App is confirmed working
     MapFilePatterns:
-        - "Resources/Maps/__Impstation/*.yml"
+        - "Resources/Maps/_Impstation/*.yml"
     # Exclude maps that generally break the map renderer,
     # like planet maps or you just don't want rendered
     mapFileExcludePatterns:
