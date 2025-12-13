@@ -49,13 +49,14 @@ Processing:
 Git:
     RepositoryUrl: "https://github.com/impstation/imp-station-14"
     Branch: "master"
-# Exclude maps that generally break the map renderer,
-# like planet maps or you just don't want rendered
+    RetrieveMapFilesFromDiff: "false" #TODO: Set to true once GitHub App is confirmed working
+    MapFilePatterns:
+        - "Resources/Maps/__Impstation/*.yml"
+    # Exclude maps that generally break the map renderer,
+    # like planet maps or you just don't want rendered
     mapFileExcludePatterns:
         - "plasma.yml"
-        - "elkridge.yml"
-        - "banana.yml"
-        - "bedlam.yml"
+    RunOnPullRequests: true
 
 # AppWebhookSecret is stored via .env
 Github:
