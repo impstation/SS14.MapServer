@@ -3,6 +3,7 @@ services:
   map_database:
     image: postgres:latest
     container_name: map_database
+    restart: unless-stopped
     environment:
       - POSTGRES_PASSWORD=postgres
     volumes:
@@ -19,6 +20,7 @@ services:
       context: .
       dockerfile: ./Dockerfile
     container_name: ss14mapserver
+    restart: unless-stopped
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
       - DOTNET_ENVIRONMENT=Production

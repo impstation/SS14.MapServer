@@ -26,8 +26,10 @@ ConnectionStrings:
 
 AllowedHosts: "*"
 
-Auth:
-    ApiKey: "debug" # You can set this to whatever
+# ApiKey is set in dotnet secrets
+
+#Auth:
+#    ApiKey: "debug" # You can set this to whatever
 
 Server:
     CorsOrigins:
