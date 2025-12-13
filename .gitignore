@@ -8,3 +8,4 @@ appsettings.Secret.*
 data/
 .idea/.idea.SS14.MapServer/.idea/discord.xml
 private-key.pem
+.env

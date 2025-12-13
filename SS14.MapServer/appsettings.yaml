@@ -26,10 +26,9 @@ ConnectionStrings:
 
 AllowedHosts: "*"
 
-# ApiKey is set in dotnet secrets
-
-#Auth:
-#    ApiKey: "debug" # You can set this to whatever
+# API key is stored via .env
+Auth:
+    ApiKey: ""
 
 Server:
     CorsOrigins:
@@ -54,13 +53,18 @@ Git:
 # like planet maps or you just don't want rendered
     mapFileExcludePatterns:
         - "plasma.yml"
+        - "elkridge.yml"
+        - "banana.yml"
+        - "bedlam.yml"
 
-# AppWebhookSecret is stored via dotnet secrets
+# AppWebhookSecret is stored via .env
 Github:
+    Enabled: false
     AppName: "impstation-map-server"
     AppPrivateKeyLocation: "./app/private-key.pem"
     AppId: 2178044
     TemplateLocation: "Resources/Templates"
+    AppWebhookSecret: ""
 
 Build:
     MapRendererCommand: "Content.MapRenderer"
