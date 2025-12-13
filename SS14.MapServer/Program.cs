@@ -26,6 +26,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddYamlFile("appsettings.yaml", false, true);
 builder.Configuration.AddYamlFile($"appsettings.{builder.Environment.EnvironmentName}.yaml", true, true);
 builder.Configuration.AddYamlFile("appsettings.Secret.yaml", true, true);
+builder.Configuration.AddEnvironmentVariables();
 
 // Controllers and Caching
 builder.Services.AddResponseCaching();
