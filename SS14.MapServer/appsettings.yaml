@@ -49,7 +49,7 @@ Processing:
 Git:
     RepositoryUrl: "https://github.com/impstation/imp-station-14"
     Branch: "master"
-    RetrieveMapFilesFromDiff: "false" #TODO: Set to true once GitHub App is confirmed working
+    RetrieveMapFilesFromDiff: true
     MapFilePatterns:
         - "Resources/Maps/_Impstation/*.yml"
     # Exclude maps that generally break the map renderer,
@@ -60,7 +60,7 @@ Git:
 
 # AppWebhookSecret is stored via .env
 Github:
-    Enabled: false
+    Enabled: true
     AppName: "impstation-map-server"
     AppPrivateKeyLocation: "./app/private-key.pem"
     AppId: 2178044
