@@ -47,15 +47,17 @@ Processing:
     ProcessMaxQueueSize: 6
 
 Git:
-    RepositoryUrl: "https://github.com/impstation/imp-station-14"
+    RepositoryUrl: "https://github.com/impstation/imp-station-14.git"
     Branch: "master"
     RetrieveMapFilesFromDiff: true
     MapFilePatterns:
         - "Resources/Maps/_Impstation/*.yml"
     # Exclude maps that generally break the map renderer,
-    # like planet maps or you just don't want rendered
+    # like planet maps or maps you just don't want rendered
     mapFileExcludePatterns:
-        - "plasma.yml"
+        - "fland.yml"
+        - "relic.yml"
+        - "skimmer.yml"
     RunOnPullRequests: true
 
 # AppWebhookSecret is stored via .env
