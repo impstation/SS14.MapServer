@@ -64,7 +64,7 @@ Git:
 Github:
     Enabled: true
     AppName: "impstation-map-server"
-    AppPrivateKeyLocation: "./app/private-key.pem"
+    AppPrivateKeyLocation: "./private-key.pem"
     AppId: 2178044
     TemplateLocation: "Resources/Templates"
     AppWebhookSecret: ""
