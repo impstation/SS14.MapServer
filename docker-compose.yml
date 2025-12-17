@@ -37,8 +37,6 @@ services:
     volumes:
       - ./SS14.MapServer/appsettings.yaml:/app/appsettings.yaml
       - ./private-key.pem:/app/private-key.pem
-      - ./build:/app/build
-      - ./files:/app/data
     ports:
       - 5218:80
     ulimits:
